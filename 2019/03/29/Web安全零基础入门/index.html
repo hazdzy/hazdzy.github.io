@@ -5,16 +5,17 @@
   
 
   
-  <title>深渊</title>
+  <title>Web安全零基础入门 | 深渊</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Web安全零基础入门零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形">
+  <meta name="description" content="零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形式传过去的，所以我们">
+<meta name="keywords" content="CTF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深渊">
+<meta property="og:title" content="Web安全零基础入门">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/Web安全零基础入门/index.html">
 <meta property="og:site_name" content="深渊">
-<meta property="og:description" content="Web安全零基础入门零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形">
+<meta property="og:description" content="零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形式传过去的，所以我们">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic4.png">
+<meta property="og:image" content="http://yoursite.com/img/websec1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic5.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at142823.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at145024.png">
@@ -25,11 +26,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic3.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at182542.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at211412.png">
-<meta property="og:updated_time" content="2019-03-29T14:47:48.222Z">
+<meta property="og:updated_time" content="2019-03-29T15:19:17.344Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深渊">
-<meta name="twitter:description" content="Web安全零基础入门零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic4.png">
+<meta name="twitter:title" content="Web安全零基础入门">
+<meta name="twitter:description" content="零、漏洞是什么？它在哪里？我该怎么操作？图1.我们完成了一次存储型XSS攻击。 Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。 漏洞出现在哪里？用户和页面的交互行为。     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形式传过去的，所以我们">
+<meta name="twitter:image" content="http://yoursite.com/img/websec1.png">
   
     <link rel="alternate" href="/atom.xml" title="深渊" type="application/atom+xml">
   
@@ -79,16 +80,26 @@
         <section id="main"><article id="post-Web安全零基础入门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/29/Web安全零基础入门/" class="article-date">
-  <time datetime="2019-03-29T14:47:48.222Z" itemprop="datePublished">2019-03-29</time>
+  <time datetime="2019-03-29T12:46:25.000Z" itemprop="datePublished">2019-03-29</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Web安全零基础入门
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Web安全零基础入门<br>零、漏洞是什么？它在哪里？我该怎么操作？<br><img src="PastedGraphic4.png" alt><br><img src="PastedGraphic5.png" alt><br>图1.我们完成了一次存储型XSS攻击。</p>
+        <p>零、漏洞是什么？它在哪里？我该怎么操作？<br><img src="/img/websec1.png" title="图1.我们完成了一次存储型XSS攻击"><br><img src="PastedGraphic5.png" alt><br>图1.我们完成了一次存储型XSS攻击。</p>
 <pre><code>Web漏洞是什么？通过传入恶意脚本/文件的形式进行权限获取、数据窃取、业务中断等行为。
 漏洞出现在哪里？用户和页面的交互行为。
     我该怎么进行攻击？构造恶意URL、填写表单/评论等内容时注入恶意脚本、上传恶意文件等。当然，不论在哪里做手脚，我们植入的恶意代码出了我们的PC都是以http报文的形式传过去的，所以我们不妨直接在http报文里做手脚。http的概念稍后会讲。
@@ -115,25 +126,7 @@
 <pre><code>补充：计算机都有哪些语言？标签语言、脚本语言都是啥？C属于哪一类？
 用于为计算机下达指令的语言大概有这几类，从低级到高级，分别是汇编语言、程序语言、脚本语言和高级语言。语言等级越低，就越偏底层偏硬件，掌握难度通常也更大，为实现同样功能编写需要的时间更多，但执行效率更高。
 汇编语言是直接和计算机指令挂钩的；程序语言是架构程序/软件使用的语言，比如C/C++/Java，这些程序会最终会被编译成可执行文件，进而调用计算机指令，处理程序语言的工具是编译器；脚本语言如JavaScript、PHP、Python是写脚本（工具）的，适合快速开发一些短小精悍的工具，特点是编写快、执行慢，处理脚本语言的工具是解释器，解释器通常由C等程序设计语言实现；高级语言如HTML、Matlab，特点是集成度极高，但只能在特定软件上使用。
-</code></pre><p>后端：PHP/MySQL<br>现在我们搞清楚了前端的结构，也搞清楚了通信的过程，那么，我们提交一项内容，在服务器端到底发生了什么？<br>PHP，在服务器端运行的脚本语言，处理后端的各种动作以及和数据库交互。注意，服务器和数据库也是分离的，在互联网和计算机的各种系统里，我们经常能看到各种分离的架构，分离有利于降低耦合度，这是我们不变的追求，耦合度降低使得管理、纠错的成本大幅降低。<br>&lt;?php </p>
-<p>if( isset( $_REQUEST[ ‘Submit’ ] ) ) {<br>    // Get input<br>    $id = $_REQUEST[ ‘id’ ]; </p>
-<pre><code>// Check database 
-$query  = &quot;SELECT first_name, last_name FROM users WHERE user_id = &apos;$id&apos;;&quot;; 
-$result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &apos;&lt;pre&gt;&apos; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &apos;&lt;/pre&gt;&apos; );
-
-// Get results 
-while( $row = mysqli_fetch_assoc( $result ) ) { 
-    // Get values 
-    $first = $row[&quot;first_name&quot;]; 
-    $last  = $row[&quot;last_name&quot;]; 
-
-    // Feedback for end user 
-    echo &quot;&lt;pre&gt;ID: {$id}&lt;br /&gt;First name: {$first}&lt;br /&gt;Surname: {$last}&lt;/pre&gt;&quot;; 
-} 
-
-mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]); 
-</code></pre><p>} </p>
-<p>?&gt;<br>这段PHP代码就执行了访问数据库中user_id=$id的数据。注意，$id是该php文件里定义的变量，在php里，我们使用前缀$表示变量。<br>在这里，如果不对$id做任何限制的话，那么这里就存在了SQL注入漏洞，我们可以通过修改id的值，把恶意SQL语句注入这段PHP代码，从而获得我们需要的数据。</p>
+</code></pre><p>后端：PHP/MySQL<br>现在我们搞清楚了前端的结构，也搞清楚了通信的过程，那么，我们提交一项内容，在服务器端到底发生了什么？<br>PHP，在服务器端运行的脚本语言，处理后端的各种动作以及和数据库交互。注意，服务器和数据库也是分离的，在互联网和计算机的各种系统里，我们经常能看到各种分离的架构，分离有利于降低耦合度，这是我们不变的追求，耦合度降低使得管理、纠错的成本大幅降低。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_REQUEST[ <span class="string">'Submit'</span> ] ) ) &#123; </span><br><span class="line">    <span class="comment">// Get input </span></span><br><span class="line">    $id = $_REQUEST[ <span class="string">'id'</span> ]; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Check database </span></span><br><span class="line">    $query  = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id';"</span>; </span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get results </span></span><br><span class="line">    <span class="keyword">while</span>( $row = mysqli_fetch_assoc( $result ) ) &#123; </span><br><span class="line">        <span class="comment">// Get values </span></span><br><span class="line">        $first = $row[<span class="string">"first_name"</span>]; </span><br><span class="line">        $last  = $row[<span class="string">"last_name"</span>]; </span><br><span class="line"></span><br><span class="line">        <span class="comment">// Feedback for end user </span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"&lt;pre&gt;ID: &#123;$id&#125;&lt;br /&gt;First name: &#123;$first&#125;&lt;br /&gt;Surname: &#123;$last&#125;&lt;/pre&gt;"</span>; </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    mysqli_close($GLOBALS[<span class="string">"___mysqli_ston"</span>]); </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure><br>这段PHP代码就执行了访问数据库中user_id=$id的数据。注意，$id是该php文件里定义的变量，在php里，我们使用前缀$表示变量。<br>在这里，如果不对$id做任何限制的话，那么这里就存在了SQL注入漏洞，我们可以通过修改id的值，把恶意SQL语句注入这段PHP代码，从而获得我们需要的数据。</p>
 <p>MySQL，这是我们最常用的一款数据库。它采用了特殊的架构使得我们对数据的增删、搜索变得异常迅速，同时具备完善的权限设置，来保证数据的安全。<br>PHP和MySQL的基本用法请参考《PHP和MySQL Web开发》。</p>
 <p>协议：HTTP &amp; HTTPS<br>    •    http=超文本传输协议，几乎所有的Web应用都使用http和https传输信息。<br>    •    https=http+security，在http和TCP之间添加了TLS、SSL协议以确保安全。<br>    •    html=超文本标记语言<br>    •    学习协议的最好方式是亲自抓包分析<br>    我们主要介绍HTTP协议：<br><img src="ScreenShot2019-03-29at211412.png" alt><br>图8.HTTP报文格式。独立行为请求行/应答行，下面是HTTP头部信息。</p>
 <pre><code>HTTP是一种无连接的协议，分为请求报文和应答报文。每次发送方发送一个HTTP请求报文，然后接收方回一个应答报文，一来一回构成一个单元。
@@ -172,9 +165,11 @@ mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjtu6tn0200030n3e40djg6r6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjtu7qjf900024i3eqww32ves" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+
     </footer>
   </div>
   
@@ -182,9 +177,9 @@ mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);
 <nav id="article-nav">
   
   
-    <a href="/2019/03/29/WebSecurity/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/03/20/experience/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">WebSecurity</div>
+      <div class="article-nav-title">我的大学经历</div>
     </a>
   
 </nav>
@@ -200,9 +195,23 @@ mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF/" style="font-size: 10px;">CTF</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -221,11 +230,7 @@ mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]);
       <ul>
         
           <li>
-            <a href="/2019/03/29/Web安全零基础入门/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/29/WebSecurity/">WebSecurity</a>
+            <a href="/2019/03/29/Web安全零基础入门/">Web安全零基础入门</a>
           </li>
         
           <li>
