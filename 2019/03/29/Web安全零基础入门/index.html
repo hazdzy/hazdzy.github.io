@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic3.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at182542.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at211412.png">
-<meta property="og:updated_time" content="2019-03-30T04:17:49.722Z">
+<meta property="og:updated_time" content="2019-03-30T04:28:55.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全零基础入门">
 <meta name="twitter:description" content="前言山东大学终于有了自己的CTF战队（PANGU）了！今年9月，我们的信息安全专业就要升级为网络空间安全学院了。借这个机会，我们想把攻防/实战这块好好搞一搞，之前实在是太侧重密码学了。于是，文哥请了他的好朋友，矿大的张老师来帮助我们组建自己的CTF战队。去年冬天的时候我考虑过自己私下拉一只战队打CTF，但同专业的同学普遍没有兴趣或者认为太难搞（因为我们几乎没上过计算机和网络的课）。于是作罢，开始课">
@@ -107,8 +107,9 @@
 <p>输入一个网址并回车的时候，后台发生了什么？我们是怎么把数据交给后台的？点击各种按钮的时候发生了什么？<br>我们常说的地址栏里的东西叫URL，统一资源定位符，互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该执行何种动作。<br><img src="/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at142823.png" alt><br><img src="/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at145024.png" alt></p>
 <center>图2.URL格式和一个例子</center>
 
-<p>hostname，如果是特定服务器提供业务，那么这里填ip地址就可以。但这样的问题是，难以让用户记住，所以，我们常用域名（如<a href="http://www.baidu.com）来代替他们。但是，我们输入域名的话，浏览器要怎么知道该数据要传递到哪里呢——DNS服务。" target="_blank" rel="noopener">www.baidu.com）来代替他们。但是，我们输入域名的话，浏览器要怎么知道该数据要传递到哪里呢——DNS服务。</a><br>DNS：是一个分布式数据库，存储着域名和IP地址之间的映射关系。使用命令ping就可以通过DNS服务解析域名，我们把向DNS服务器提交域名，得到IP地址的行为称作域名解析。<br>端口：当数据包到达我们电脑的时候，我们怎么知道把数据交给哪个应用程序或者说进程来处理呢？答案是看端口号。比如，http服务的端口号是80，那么我们收到一个http报文，解析它的报文头，发现端口号是80，就把这个数据包分流到浏览器，把报文头拆掉，提取出数据来（比如，数据是一个.html文件），浏览器对.html文件进行解释，这样就得到我们的网页了。</p>
-<p>浏览器：我们的网页是.html文件，.html文件由html语言写成，这是一种标签语言。浏览器本质是个解释器，负责把.html文件里的标签解释成可见的内容。html我们之后再讲。<br>路径：一个域名对应着服务器上的一个根目录，里面有很多的子文件夹，存放着不同的业务文件。在上面的例子中，我们进入了search文件夹，这里面可能存放着大量图片数据。<br>？问号连接表单里的选项，我们在网页上填form（form是html里的概念），再按回车，那么URL里就会用?a=xxx的方式告诉服务器，请把变量a的值设为xxx。所以，我们可以再xxx里做文章。【<strong>所有用户填进来的内容，都是不安全的！！</strong>】</p>
+<p>hostname，如果是特定服务器提供业务，那么这里填ip地址就可以。但这样的问题是，难以让用户记住，所以，我们常用域名（如<a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a> ）来代替他们。但是，我们输入域名的话，浏览器要怎么知道该数据要传递到哪里呢——DNS服务。<br>DNS：是一个分布式数据库，存储着域名和IP地址之间的映射关系。使用命令ping就可以通过DNS服务解析域名，我们把向DNS服务器提交域名，得到IP地址的行为称作域名解析。<br>端口：当数据包到达我们电脑的时候，我们怎么知道把数据交给哪个应用程序或者说进程来处理呢？答案是看端口号。比如，http服务的端口号是80，那么我们收到一个http报文，解析它的报文头，发现端口号是80，就把这个数据包分流到浏览器，把报文头拆掉，提取出数据来（比如，数据是一个.html文件），浏览器对.html文件进行解释，这样就得到我们的网页了。</p>
+<p>浏览器：我们的网页是.html文件，.html文件由html语言写成，这是一种标签语言。浏览器本质是个解释器，负责把.html文件里的标签解释成可见的内容。html我们之后再讲。<br>路径：一个域名对应着服务器上的一个根目录，里面有很多的子文件夹，存放着不同的业务文件。在上面的例子中，我们进入了search文件夹，这里面可能存放着大量图片数据。</p>
+<p>？问号连接表单里的选项，我们在网页上填form（form是html里的概念），再按回车，那么URL里就会用?a=xxx的方式告诉服务器，请把变量a的值设为xxx。所以，我们可以再xxx里做文章。【<strong>所有用户填进来的内容，都是不安全的！！</strong>】</p>
 <p> #定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a,b,c三个段，我们在url上添加#b，网页就会直接定位到b段。特点是#后的内容只交给客户端的浏览器，而不传到服务器上。<br>&amp;分隔符，我们传进去很多数据，格式都是a=xxx，a叫做键名，xxx叫做键值，合称键，键本身是个关联数组。键之间通过&amp;分开。</p>
 <h2 id="一、网络通信是怎么进行的？以HTTP服务为例"><a href="#一、网络通信是怎么进行的？以HTTP服务为例" class="headerlink" title="一、网络通信是怎么进行的？以HTTP服务为例"></a>一、网络通信是怎么进行的？以HTTP服务为例</h2><p><img src="/2019/03/29/Web安全零基础入门/PastedGraphic6.png" alt></p>
 <center>图3. 客户端（浏览器）——Internet（网线&amp;路由器）——服务器——数据库</center>
@@ -186,14 +187,15 @@
 </li>
 </ul>
 <p>HTTP是一种无连接的协议，分为请求报文和应答报文。每次发送方发送一个HTTP请求报文，然后接收方回一个应答报文，一来一回构成一个单元。</p>
-<p>协议分析<br>    请求报文结构：请求行+头部+[正文]。正文是可选的，我们通常用[ ]讲可选的内容括起来。</p>
+<h3 id="协议分析"><a href="#协议分析" class="headerlink" title="协议分析"></a>协议分析</h3><p>请求报文结构：请求行+头部+[正文]。正文是可选的，我们通常用[ ]讲可选的内容括起来。</p>
 <ul>
 <li>请求行格式：Method Request-URI HTTP-Version CRLF<br>  ⁃    方法，请求的URI（URL是URI的子集），HTTP协议版本（18年更新了http 3.0），CRLF=回车<br>  ⁃    常用的方法有GET，POST。<br>  ⁃    GET：获取URI标识的资源；<br>  ⁃    POST：在URI标识的资源后附加新的资源，比如提交表单；</li>
-<li><p>头部：请求报文可以使用普通头，请求头和实体头，我们主要讲请求头。<br>  ⁃    请求头：客户端自身的信息以及向服务器端传递的附加信息。比如客户端使用的硬件名和操作系统，具体见上图。</p>
-<p>  应答报文结构：状态行+头部+[正文]。</p>
-</li>
-<li>应答头格式：HTTP-Version Status-Code Reason-Phrase CRLF<br>  ⁃    中间两项是状态+描述，比如<br>  ⁃    200+OK，404+Not Found</li>
-<li>头部：应答报文可以使用普通头，应答头和实体头，我们主要讲请求头。<br>  ⁃    包含附加的应答信息和服务器自身的信息等。<br>更多的信息请参考wiki <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></li>
+<li>头部：请求报文可以使用普通头，请求头和实体头，我们主要讲请求头。<br>  ⁃    请求头：客户端自身的信息以及向服务器端传递的附加信息。比如客户端使用的硬件名和操作系统，具体见上图。</li>
+</ul>
+<p>应答报文结构：状态行+头部+[正文]。</p>
+<ul>
+<li>状态行格式：HTTP-Version Status-Code Reason-Phrase CRLF<br>  ⁃    中间两项是状态+描述，比如<br>  ⁃    200+OK，404+Not Found</li>
+<li>头部：应答报文可以使用普通头，应答头和实体头，我们主要讲应答头。<br>  ⁃    包含附加的应答信息和服务器自身的信息等。<br>更多的信息请参考wiki <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></li>
 </ul>
 <h2 id="三、漏洞都有哪些？掌握了上面的基础后，该怎么学习Web安全？"><a href="#三、漏洞都有哪些？掌握了上面的基础后，该怎么学习Web安全？" class="headerlink" title="三、漏洞都有哪些？掌握了上面的基础后，该怎么学习Web安全？"></a>三、漏洞都有哪些？掌握了上面的基础后，该怎么学习Web安全？</h2><p>常见漏洞：</p>
 <ol>
