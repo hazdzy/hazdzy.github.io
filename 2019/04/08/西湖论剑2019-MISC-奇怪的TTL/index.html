@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>西湖论剑2019-MISC-奇怪的TTL | 深渊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言昨天参加了2019西湖论剑杯的初赛，有一道MISC做了很久没做出来，今天看了wp重新把思路整理了一下。 题干我们截获了一些IP数据报，发现报文头中的TTL值特别可疑，怀疑是通信方嵌入了数据到TTL，我们将这些TTL值提取了出来，你能看出什么端倪吗？点击下载 初步分析1.观察数据量，共有295374行，初步断定和某种图片文件相关。2.做因子分解，295374=2x2x2x2x18461。不是平方">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="西湖论剑2019-MISC-奇怪的TTL">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/index.html">
+<meta property="og:site_name" content="深渊">
+<meta property="og:description" content="前言昨天参加了2019西湖论剑杯的初赛，有一道MISC做了很久没做出来，今天看了wp重新把思路整理了一下。 题干我们截获了一些IP数据报，发现报文头中的TTL值特别可疑，怀疑是通信方嵌入了数据到TTL，我们将这些TTL值提取了出来，你能看出什么端倪吗？点击下载 初步分析1.观察数据量，共有295374行，初步断定和某种图片文件相关。2.做因子分解，295374=2x2x2x2x18461。不是平方">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/decode.png">
+<meta property="og:updated_time" content="2019-04-08T13:52:19.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="西湖论剑2019-MISC-奇怪的TTL">
+<meta name="twitter:description" content="前言昨天参加了2019西湖论剑杯的初赛，有一道MISC做了很久没做出来，今天看了wp重新把思路整理了一下。 题干我们截获了一些IP数据报，发现报文头中的TTL值特别可疑，怀疑是通信方嵌入了数据到TTL，我们将这些TTL值提取了出来，你能看出什么端倪吗？点击下载 初步分析1.观察数据量，共有295374行，初步断定和某种图片文件相关。2.做因子分解，295374=2x2x2x2x18461。不是平方">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/decode.png">
+  
+    <link rel="alternate" href="/atom.xml" title="深渊" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">深渊</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-西湖论剑2019-MISC-奇怪的TTL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" class="article-date">
+  <time datetime="2019-04-08T12:50:23.000Z" itemprop="datePublished">2019-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      西湖论剑2019-MISC-奇怪的TTL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>昨天参加了2019西湖论剑杯的初赛，有一道MISC做了很久没做出来，今天看了wp重新把思路整理了一下。</p>
+<h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p>我们截获了一些IP数据报，发现报文头中的TTL值特别可疑，怀疑是通信方嵌入了数据到TTL，我们将这些TTL值提取了出来，你能看出什么端倪吗？<br><a href="/西湖论剑2019-MISC-奇怪的TTL/ttl.txt&quot;">点击下载</a></p>
+<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>1.观察数据量，共有295374行，初步断定和某种图片文件相关。<br>2.做因子分解，295374=2x2x2x2x18461。不是平方数，排除直接生成二维码；因子分布不均匀，排除直接生成灰度图；没有因子3，排除纯GRB值的可能。<br>3.观察数据格式，63=00111111，127=01111111，191=10111111，255=11111111。推测后六位可能是无效数据，删除之。<br>4.观察前面数据的内容：01100110011001100100011010000011，按ASCII解码，得到ffd8，这是.jpg/.jepg的头，断定需要恢复成.jpg文件。</p>
+<h2 id="处理数据"><a href="#处理数据" class="headerlink" title="处理数据"></a>处理数据</h2><p>将数据封装成字节后，发现共有6个jpg头部，也即六张图片，于是将他们依次恢复成.jpg文件，代码如下。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'/ttl.txt'</span>) <span class="keyword">as</span> f: </span><br><span class="line">	cont = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment">#按回车把数据分开并读取成整数</span></span><br><span class="line">cont = list(map(<span class="keyword">lambda</span> x: int(x[<span class="number">4</span>:]) &gt;&gt; <span class="number">6</span>,filter(<span class="keyword">lambda</span> x: len(x) &gt; <span class="number">1</span>,cont.split(<span class="string">'\n'</span>)))) </span><br><span class="line"><span class="keyword">print</span> cont[<span class="number">0</span>:<span class="number">100</span>]</span><br><span class="line">res = list() </span><br><span class="line"><span class="comment">#每4个数据组成一个字节</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(int(len(cont)/<span class="number">4</span>)):</span><br><span class="line">	a = cont[<span class="number">4</span>*i] </span><br><span class="line">	b = cont[<span class="number">4</span>*i+<span class="number">1</span>] </span><br><span class="line">	c = cont[<span class="number">4</span>*i+<span class="number">2</span>] </span><br><span class="line">	d = cont[<span class="number">4</span>*i+<span class="number">3</span>] </span><br><span class="line">	res.append(chr((a &lt;&lt; <span class="number">6</span>) | (b &lt;&lt; <span class="number">4</span>) | (c &lt;&lt; <span class="number">2</span>) | (d)))</span><br><span class="line"><span class="comment">#重新组装成字符串</span></span><br><span class="line">res = <span class="string">""</span>.join(res) </span><br><span class="line">start = <span class="number">0</span> </span><br><span class="line">index = <span class="number">0</span> </span><br><span class="line"><span class="comment">#按jpg的头ffd8把隐藏的jpg文件依次找出来</span></span><br><span class="line"><span class="keyword">while</span> res.find(<span class="string">'ffd8'</span>,start) != <span class="number">-1</span>:</span><br><span class="line">	end = res.find(<span class="string">'ffd8'</span>,start+<span class="number">1</span>) </span><br><span class="line">	<span class="keyword">if</span> end == <span class="number">-1</span>:</span><br><span class="line">		tmp = bytearray.fromhex(res[start:])</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		tmp = bytearray.fromhex(res[start:end]) </span><br><span class="line">	<span class="keyword">with</span> open(str(index)+<span class="string">'.jpg'</span>,<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">		f.write(tmp) </span><br><span class="line">	index += <span class="number">1</span> </span><br><span class="line">	start = end </span><br><span class="line">	print(<span class="string">'DONE'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="分析图片"><a href="#分析图片" class="headerlink" title="分析图片"></a>分析图片</h2><p>我们得到了6张图，确认是二维码，观察图片边缘，我们将图片拼接起来。<br><img src="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/decode.png" alt><br>扫码，得到<br>
+key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
+</p>
+<h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>观察字符串，形式和flag形式一致，推测是置换密码。考虑到Encode(flag)=fftu，排除凯撒密码，推测可能是维吉尼亚密码，对这条线索进行手工破解，得到秘钥auto。<br>解密得到<br>
+ﬂag{2028ab39927df1d96e6a12b03e58002e
+<br>提交成功！</p>
+<h2 id="附录：TTL隐写"><a href="#附录：TTL隐写" class="headerlink" title="附录：TTL隐写"></a>附录：TTL隐写</h2><p>TTL隐写是一种常见的隐写术，由于TTL的范围是0~255，而通常十几跳就可以完成IP包的传输。所以我们可以约定使用TTL的最高两位用于传输，每个Byte拆分到四个IP包里，低6位置1。这样传输过程中TTL的值即使变化，也通常不会影响到高2位。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" data-id="cju8er3bb00009w3eat2gm5ge" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/29/Web安全零基础入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Web安全零基础入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF/" style="font-size: 10px;">CTF</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/">西湖论剑2019-MISC-奇怪的TTL</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/Web安全零基础入门/">Web安全零基础入门</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/20/experience/">我的大学经历</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/09/Why-Blog/">我为什么要搭建博客？</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 翔誉<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

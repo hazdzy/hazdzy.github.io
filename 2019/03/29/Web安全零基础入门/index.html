@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/PastedGraphic3.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at182542.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/Web安全零基础入门/ScreenShot2019-03-29at211412.png">
-<meta property="og:updated_time" content="2019-03-30T04:28:55.820Z">
+<meta property="og:updated_time" content="2019-04-08T12:48:22.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全零基础入门">
 <meta name="twitter:description" content="前言山东大学终于有了自己的CTF战队（PANGU）了！今年9月，我们的信息安全专业就要升级为网络空间安全学院了。借这个机会，我们想把攻防/实战这块好好搞一搞，之前实在是太侧重密码学了。于是，文哥请了他的好朋友，矿大的张老师来帮助我们组建自己的CTF战队。去年冬天的时候我考虑过自己私下拉一只战队打CTF，但同专业的同学普遍没有兴趣或者认为太难搞（因为我们几乎没上过计算机和网络的课）。于是作罢，开始课">
@@ -161,7 +161,7 @@
 <p>端：通信的两端通常叫做客户端和服务器端（也称前端和后端）。在具体的通信行为中，又被称作发送方和接收方。<br>封装和解封：逐层加头和拆头的过程。</p>
 <h3 id="机器是怎么知道把数据交给谁的？"><a href="#机器是怎么知道把数据交给谁的？" class="headerlink" title="机器是怎么知道把数据交给谁的？"></a>机器是怎么知道把数据交给谁的？</h3><p>笼统地讲，我们需要一系列的地址来确定对方的坐标。<br>坐标可分为：</p>
 <ul>
-<li>协议号，每层都使用若干种协议，每个协议都有自己的协议号。协议号标志当前数据使用的协议是什么？而后交给特定的设备处理。下面我们介绍几个特定层使用的地址。<br>  ⁃    常用协议号：HTTP=80、TCP=6、IP=4、UDP=17、FTP=20/21。</li>
+<li>协议号，每层都使用若干种协议，每个协议都有自己的协议号。协议号标志当前数据使用的协议是什么？而后交给特定的设备处理。下面我们介绍几个特定层使用的地址。<br>  ⁃    常用协议号：TCP=6、IP=4、UDP=17、FTP=20/21。</li>
 <li>MAC地址：也叫物理地址，每台可联网设备出厂的时候都会有这样一个地址，48bit，厂家向MAC地址管理组织（IEEE）申请一个地址段，然后它就可以给生产的设备添加该地址段的MAC地址了。</li>
 <li>IP地址：我们在网络上产生各种行为的时候需要一个身份，这个身份由IP地址进行标识。一般也需要向管理组织申请。例外是私有网段、环回地址等。针对IP层（网络层）的攻击行为属于网络攻击，我们在这里先了解Web安全（应用层）的行为，IP本身的内容非常丰富。<strong>IP地址是最重要的！</strong></li>
 <li>端口：报文到达接收方计算机后，计算机应该交给哪个程序处理报文携带的数据？这是由端口决定。<br>  ⁃    0~1023称为知名端口号，计算机的通用业务，像是HTTP（超文本传输协议，端口80）、FTP（文件传输协议，端口20/21）即在1~1024中选择端口。<br>  ⁃    1024~49151是注册端口号，软件通常会使用特定的端口，比如福昕阅览器占用了4000。<br>  ⁃    49152~65535是临时端口号，网络游戏经常会使用这些端口，随机使用，即用即弃。</li>
@@ -210,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjtuzjlyx00027n3eeq2qkzrj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cju8e79p00005883esnwybj5s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -220,6 +220,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          西湖论剑2019-MISC-奇怪的TTL
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/20/experience/" id="article-nav-older" class="article-nav-link-wrap">
@@ -262,7 +271,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
     </div>
   </div>
 
@@ -273,6 +282,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/">西湖论剑2019-MISC-奇怪的TTL</a>
+          </li>
         
           <li>
             <a href="/2019/03/29/Web安全零基础入门/">Web安全零基础入门</a>
