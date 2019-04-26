@@ -87,9 +87,9 @@
         <h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p><a href="/2019全国大学生信息安全竞赛-Asymmetric/Asymmetric.zip&quot;">点击下载</a></p>
 <h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>分析源码，得知是简单的rsa解密问题，不是标准rsa，因为n=p^r，但不妨碍我们做类似的分析。难点在于如何处理大整数。</p>
 <h2 id="分解大整数n"><a href="#分解大整数n" class="headerlink" title="分解大整数n"></a>分解大整数n</h2><p><a href="http://www.factordb.com/" target="_blank" rel="noopener">http://www.factordb.com/</a><br>一个在线因子分解的网站。一般的算法处理的数字位数优先，确定性算法计算大整数n的因子几乎是不可能的，这也是rsa的安全性所在。但对于这种特殊形式的n，这类算法是有效的，原理可见《Modern Computer Algebra》一书。输入n，我们得到p的值以及r=4。</p>
-<p>##求私钥d<br>已知明文和公钥对的情况下，我们解密仍需要私钥d，其中d满足$de\equiv 1(mod \phi(n))$。这里涉及两个步骤，一是大整数乘法计算\phi(n)（一般的计算器只能支持十进制20位以内的数字的乘法），二是求解二元一次方程$dx+ey=1$。</p>
-<p>#计算\phi(n)<br>在网上下载大整数计算器，得到\phi(n)的值。</p>
-<p>#解一次方程求d<br>Python的gmpy2库有封装好了的函数invert可以求群中元素的逆元。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert</span><br><span class="line">d=invert(e,phi)</span><br><span class="line"><span class="keyword">print</span> d</span><br></pre></td></tr></table></figure></p>
+<h2 id="求私钥d"><a href="#求私钥d" class="headerlink" title="求私钥d"></a>求私钥d</h2><p>已知明文和公钥对的情况下，我们解密仍需要私钥d，其中d满足$de\equiv 1(mod \phi(n))$。这里涉及两个步骤，一是大整数乘法计算\phi(n)（一般的计算器只能支持十进制20位以内的数字的乘法），二是求解二元一次方程$dx+ey=1$。</p>
+<h1 id="计算-phi-n"><a href="#计算-phi-n" class="headerlink" title="计算\phi(n)"></a>计算\phi(n)</h1><p>在网上下载大整数计算器，得到\phi(n)的值。</p>
+<h1 id="解一次方程求d"><a href="#解一次方程求d" class="headerlink" title="解一次方程求d"></a>解一次方程求d</h1><p>Python的gmpy2库有封装好了的函数invert可以求群中元素的逆元。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert</span><br><span class="line">d=invert(e,phi)</span><br><span class="line"><span class="keyword">print</span> d</span><br></pre></td></tr></table></figure></p>
 <h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>按照源码的步骤倒着计算一遍：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">enc_bytes=enc_temp.decode(<span class="string">'base64'</span>)</span><br><span class="line">enc=bytes_to_long(enc_bytes)</span><br><span class="line">x=pow(enc,d,n)</span><br><span class="line">text=long_to_bytes(x)</span><br><span class="line"><span class="keyword">print</span> text</span><br></pre></td></tr></table></figure><br>得到flag<br>
 flag{ec33f669d2d659e2bc27dbffdfeb0f38}
 <br>提交成功！</p>
@@ -97,7 +97,7 @@ flag{ec33f669d2d659e2bc27dbffdfeb0f38}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/" data-id="cjuxrhgf10000qp3e1tr4l7c2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/" data-id="cjuxs0w9z0000uv3eivmvmj16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -146,7 +146,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" data-id="cjuxrhgfd0003qp3e3txmr7nf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" data-id="cjuxs0waf0004uv3ewo50waao" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -191,12 +191,13 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
 <p>hostname，如果是特定服务器提供业务，那么这里填ip地址就可以。但这样的问题是，难以让用户记住，所以，我们常用域名（如<a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a> ）来代替他们。但是，我们输入域名的话，浏览器要怎么知道该数据要传递到哪里呢——DNS服务。<br>DNS：是一个分布式数据库，存储着域名和IP地址之间的映射关系。使用命令ping就可以通过DNS服务解析域名，我们把向DNS服务器提交域名，得到IP地址的行为称作域名解析。<br>端口：当数据包到达我们电脑的时候，我们怎么知道把数据交给哪个应用程序或者说进程来处理呢？答案是看端口号。比如，http服务的端口号是80，那么我们收到一个http报文，解析它的报文头，发现端口号是80，就把这个数据包分流到浏览器，把报文头拆掉，提取出数据来（比如，数据是一个.html文件），浏览器对.html文件进行解释，这样就得到我们的网页了。</p>
 <p>浏览器：我们的网页是.html文件，.html文件由html语言写成，这是一种标签语言。浏览器本质是个解释器，负责把.html文件里的标签解释成可见的内容。html我们之后再讲。<br>路径：一个域名对应着服务器上的一个根目录，里面有很多的子文件夹，存放着不同的业务文件。在上面的例子中，我们进入了search文件夹，这里面可能存放着大量图片数据。</p>
 <p>？问号连接表单里的选项，我们在网页上填form（form是html里的概念），再按回车，那么URL里就会用?a=xxx的方式告诉服务器，请把变量a的值设为xxx。所以，我们可以再xxx里做文章。【<strong>所有用户填进来的内容，都是不安全的！！</strong>】</p>
-<p> #定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a,b,c三个段，我们在url上添加#b，网页就会直接定位到b段。特点是#后的内容只交给客户端的浏览器，而不传到服务器上。<br>&amp;分隔符，我们传进去很多数据，格式都是a=xxx，a叫做键名，xxx叫做键值，合称键，键本身是个关联数组。键之间通过&amp;分开。</p>
+<h1 id="定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a-b-c三个段，我们在url上添加-b，网页就会直接定位到b段。特点是-后的内容只交给客户端的浏览器，而不传到服务器上。"><a href="#定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a-b-c三个段，我们在url上添加-b，网页就会直接定位到b段。特点是-后的内容只交给客户端的浏览器，而不传到服务器上。" class="headerlink" title="定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a,b,c三个段，我们在url上添加#b，网页就会直接定位到b段。特点是#后的内容只交给客户端的浏览器，而不传到服务器上。"></a>定位符，作用是告诉客户端的浏览器，把当前页面定到哪个位置上。比如网页分了a,b,c三个段，我们在url上添加#b，网页就会直接定位到b段。特点是#后的内容只交给客户端的浏览器，而不传到服务器上。</h1><p>&amp;分隔符，我们传进去很多数据，格式都是a=xxx，a叫做键名，xxx叫做键值，合称键，键本身是个关联数组。键之间通过&amp;分开。</p>
 <h2 id="一、网络通信是怎么进行的？以HTTP服务为例"><a href="#一、网络通信是怎么进行的？以HTTP服务为例" class="headerlink" title="一、网络通信是怎么进行的？以HTTP服务为例"></a>一、网络通信是怎么进行的？以HTTP服务为例</h2><p><img src="/2019/03/29/Web安全零基础入门/PastedGraphic6.png" alt></p>
-<center>图3. 客户端（浏览器）——Internet（网线&amp;路由器）——服务器——数据库</center>
+<center>图3. 客户端（浏览器）——Internet（网线&路由器）——服务器——数据库</center>
 
 <p>前面说的数据包、http服务、http协议都是啥？客户端和服务器端之间的通信是怎么进行的？</p>
-<h3 id="TCP-IP四层网络模型："><a href="#TCP-IP四层网络模型：" class="headerlink" title="TCP/IP四层网络模型："></a>TCP/IP四层网络模型：</h3><table>
+<h3 id="TCP-IP四层网络模型："><a href="#TCP-IP四层网络模型：" class="headerlink" title="TCP/IP四层网络模型："></a>TCP/IP四层网络模型：</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>名称</th>
@@ -237,6 +238,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
 </tr>
 </tbody>
 </table>
+</div>
 <p>过程：一般地，客户端应用层—客户端传输层—客户端网络层—客户端链路层——网线——服务器端链路层—服务器端网络层—服务器端传输层—服务器端应用层。这个四层模型是一个抽象概念，实际上有很多协议的所属层次是模糊的。<br>我们以【<strong>HTTP-TCP-IP-以太网</strong>】这条线为例。<br>——————————————————————————————————————————<br>客户端应用层：[数据]——&gt;[HTTP头][数据]=HTTP报文<br>客户端传输层：[HTTP头][数据]——&gt;[TCP头][HTTP头][数据]=承载HTTP的TCP报文<br>            （[HTTP头][数据]整体称为TCP的数据部分）<br>……<br>————无线/有线传输过程————<br>……<br>服务器端网络层：[IP头][TCP头][HTTP头][数据]——&gt;[TCP头][HTTP头][数据]<br>……<br>服务器端应用层：[HTTP头][数据]——&gt;[数据]<br>——————————————————————————————————————————</p>
 <p>我们在浏览器里填了一项数据递交上去，浏览器就会把这个数据包装成一个HTTP报文，向下交给操作系统内置的传输层（应用层协议由应用程序，如浏览器处理；传输层由操作系统处理；网络层由操作系统和路由器处理；链路层由交换机处理）<br>传输层根据报文的数据生成一个TCP头，之后把报文发给网络层，加IP头（TCP报文+IP头=数据包，当然这些叫法都是无所谓的，各有习惯），再交给路由器，路由器根据IP头部的信息进行转发，链路层负责衔接线路和网络层，对数据包加以太头，称为数据帧。最终在线路里流动，此时数据叫做比特流。</p>
 <p>端：通信的两端通常叫做客户端和服务器端（也称前端和后端）。在具体的通信行为中，又被称作发送方和接收方。<br>封装和解封：逐层加头和拆头的过程。</p>
@@ -291,7 +293,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjuxrhggi0008qp3er1tvfqve" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjuxs0wb30007uv3ez04jwccn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -336,7 +338,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/20/experience/" data-id="cjuxrhgfe0004qp3e5trnyvs5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/20/experience/" data-id="cjuxs0wad0003uv3ebiqt2k0q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -377,7 +379,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/Why-Blog/" data-id="cjuxrhgf80001qp3ew0m8866h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/Why-Blog/" data-id="cjuxs0wa60001uv3eixn9io1a" class="article-share-link">Share</a>
       
       
     </footer>
