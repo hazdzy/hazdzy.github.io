@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2019全国大学生信息安全竞赛-Asymmetric" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/" class="article-date">
+  <time datetime="2019-04-26T07:08:11.000Z" itemprop="datePublished">2019-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/">2019全国大学生信息安全竞赛-Asymmetric</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h2><p><a href="/2019全国大学生信息安全竞赛-Asymmetric/Asymmetric.zip&quot;">点击下载</a></p>
+<h2 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h2><p>分析源码，得知是简单的rsa解密问题，不是标准rsa，因为n=p^r，但不妨碍我们做类似的分析。难点在于如何处理大整数。</p>
+<h2 id="分解大整数n"><a href="#分解大整数n" class="headerlink" title="分解大整数n"></a>分解大整数n</h2><p><a href="http://www.factordb.com/" target="_blank" rel="noopener">http://www.factordb.com/</a><br>一个在线因子分解的网站。一般的算法处理的数字位数优先，确定性算法计算大整数n的因子几乎是不可能的，这也是rsa的安全性所在。但对于这种特殊形式的n，这类算法是有效的，原理可见《Modern Computer Algebra》一书。输入n，我们得到p的值以及r=4。</p>
+<p>##求私钥d<br>已知明文和公钥对的情况下，我们解密仍需要私钥d，其中d满足$de\equiv 1(mod \phi(n))$。这里涉及两个步骤，一是大整数乘法计算\phi(n)（一般的计算器只能支持十进制20位以内的数字的乘法），二是求解二元一次方程$dx+ey=1$。</p>
+<p>#计算\phi(n)<br>在网上下载大整数计算器，得到\phi(n)的值。</p>
+<p>#解一次方程求d<br>Python的gmpy2库有封装好了的函数invert可以求群中元素的逆元。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> invert</span><br><span class="line">d=invert(e,phi)</span><br><span class="line"><span class="keyword">print</span> d</span><br></pre></td></tr></table></figure></p>
+<h2 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h2><p>按照源码的步骤倒着计算一遍：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line">enc_bytes=enc_temp.decode(<span class="string">'base64'</span>)</span><br><span class="line">enc=bytes_to_long(enc_bytes)</span><br><span class="line">x=pow(enc,d,n)</span><br><span class="line">text=long_to_bytes(x)</span><br><span class="line"><span class="keyword">print</span> text</span><br></pre></td></tr></table></figure><br>得到flag<br>
+flag{ec33f669d2d659e2bc27dbffdfeb0f38}
+<br>提交成功！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/" data-id="cjuxrhgf10000qp3e1tr4l7c2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-西湖论剑2019-MISC-奇怪的TTL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" class="article-date">
@@ -99,7 +146,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" data-id="cju8er3bb00009w3eat2gm5ge" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/" data-id="cjuxrhgfd0003qp3e3txmr7nf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -244,7 +291,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cju8e79p00005883esnwybj5s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/Web安全零基础入门/" data-id="cjuxrhggi0008qp3er1tvfqve" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
@@ -289,7 +336,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/20/experience/" data-id="cju8e79oa0002883enwp2y8ij" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/20/experience/" data-id="cjuxrhgfe0004qp3e5trnyvs5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,7 +377,7 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/09/Why-Blog/" data-id="cju8e79nz0000883e6zf8enrq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/09/Why-Blog/" data-id="cjuxrhgf80001qp3ew0m8866h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -383,6 +430,10 @@ key:AutomaticKey cipher:fftu{2028mb39927wn1f96o6e12z03j58002p}
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/04/26/2019全国大学生信息安全竞赛-Asymmetric/">2019全国大学生信息安全竞赛-Asymmetric</a>
+          </li>
         
           <li>
             <a href="/2019/04/08/西湖论剑2019-MISC-奇怪的TTL/">西湖论剑2019-MISC-奇怪的TTL</a>
